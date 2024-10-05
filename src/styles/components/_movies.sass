@@ -1,0 +1,66 @@
+@use "./../_variables" as *
+@use "./../_mixins" as *
+@use "sass:color"
+
+.movies
+  margin-bottom: 15vh
+  position: relative
+  &__container
+    @include containerFlex($dir: column)
+  &__section-title
+    margin: 0 auto 3.2rem
+    text-align: center
+  &__select
+    position: relative
+    &__title
+      padding: 2.4rem
+      width: 38rem
+      border: 3px solid $text-color-primary
+      position: relative
+      font-size: 1.6em
+      &::after
+        position: absolute
+        top: 50%
+        right: 2.4rem
+        transform: translateY(-50%)
+        content: "∨"
+        font-size: 1.2em
+      &--is-opened
+        &::after
+          content: "∧"
+    &__list
+      font-size: 1.35em
+      width: 32rem
+      display: block
+      position: absolute
+      top: 9rem
+      border-radius: 2.8rem
+      background-color: color.adjust($bg-color-primary, $lightness: 6%)
+      height: 0
+      overflow-y: hidden
+      transition: height 0.5s ease
+      &--is-opened
+        // border: 2px solid $text-color-primary
+        height: 684px
+
+      &__item
+        &:hover
+          cursor: pointer
+          background-color: color.adjust($bg-color-primary, $lightness: 8%)
+        &:first-child
+          border-radius: 2.8rem 2.8rem 0 0
+        &:last-child
+          border-radius: 0 0 2.8rem 2.8rem
+
+        & span
+          display: block
+          padding: 2rem 2rem
+  &__list
+    margin-top: 5rem
+    border: 2px solid $text-color-primary
+    border-radius: 0 1.2rem
+    padding: 4rem
+    &__item
+      display: none
+      &--is-active
+        display: block
