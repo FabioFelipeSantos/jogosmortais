@@ -9,9 +9,8 @@ const useref = require("gulp-useref");
 function html() {
   return gulp
     .src("./src/*.html")
-    .pipe(useref())
     .pipe(htmlMin({ collapseWhitespace: true }))
-    .pipe(gulp.dest("./dist"));
+    .pipe(gulp.dest("./dist/html"));
 }
 
 function scripts() {
